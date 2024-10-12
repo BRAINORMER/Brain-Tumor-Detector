@@ -29,7 +29,7 @@ def detect_and_plot(image, model):
         x1, y1, x2, y2 = detection.xyxy[0].cpu().numpy()
         conf = detection.conf[0].cpu().numpy()
         cls = detection.cls[0].cpu().numpy()
-        rect = patches.Rectangle((x1, y1), x2-x1, y2-y1, linewidth=2, edgecolor='r', facecolor='none')
+        rect = patches.Rectangle((x1, y1), x2 - x1, y2 - y1, linewidth=2, edgecolor='r', facecolor='none')
         ax.add_patch(rect)
         plt.text(x1, y1, f"{classes[int(cls)]} {conf:.2f}", color='white', fontsize=12, backgroundcolor='red')
         
@@ -53,10 +53,13 @@ uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "pn
 if uploaded_image is not None:
     # Open and display the image using PIL
     image = Image.open(uploaded_image)
+    
+    # Convert image to RGB format and resize to 640x640
+    image = image.convert("RGB").resize((640, 640))
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Convert PIL image to a format suitable for YOLO model
-    image_np = np.array(image)
+    image_np = np.array(image) / 255.0  # Normalize the image to [0, 1] range
     
     # Load the YOLO model
     model_path = 'BRAIN_TUMOR_DETECTOR_model.pt'  # Update this path to your model
