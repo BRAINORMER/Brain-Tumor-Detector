@@ -59,7 +59,7 @@ if uploaded_image is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Convert PIL image to a format suitable for YOLO model
-    image_np = np.array(image) / 255.0  # Normalize the image to [0, 1] range
+    image_np = np.array(image)
     
     # Load the YOLO model
     model_path = 'BRAIN_TUMOR_DETECTOR_model.pt'  # Update this path to your model
