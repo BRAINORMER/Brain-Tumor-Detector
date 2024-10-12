@@ -44,7 +44,7 @@ def detect_and_plot(image, model):
     return buf
 
 # Streamlit app setup
-st.set_page_config(page_title="Brain Tumor Detection", layout="centered")
+st.set_page_config(page_title="Brain Tumor Detector", layout="centered")
 st.markdown("<h1 style='text-align: center; color: #FF0800;'>Brain Tumor Detection</h1>", unsafe_allow_html=True)
 
 st.subheader("Upload Image")
@@ -59,7 +59,7 @@ if uploaded_image is not None:
     image_np = np.array(image)
     
     # Load the YOLO model
-    model_path = 'yolov8_model.pt'  # Update this path to your model
+    model_path = 'BRAIN_TUMOR_DETECTOR_model.pt'  # Update this path to your model
     model = load_model(model_path)
     
     if model is not None:
