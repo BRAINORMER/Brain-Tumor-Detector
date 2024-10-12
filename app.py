@@ -45,7 +45,7 @@ def detect_and_plot(image, model):
 
 # Streamlit app setup
 st.set_page_config(page_title="Brain Tumor Detector", layout="centered")
-st.markdown("<h1 style='text-align: center; color: #FF0800;'>Brain Tumor Detection</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #FF0800;'>Brain Tumor Detector</h1>", unsafe_allow_html=True)
 
 st.subheader("Upload Image")
 uploaded_image = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
