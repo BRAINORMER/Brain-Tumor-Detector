@@ -55,7 +55,7 @@ if uploaded_image is not None:
     image = Image.open(uploaded_image)
     
     # Convert image to RGB format and resize to 640x640
-    image = image.convert("RGB").resize((640, 640))
+    image = image.convert("RGB")
     st.image(image, caption='Uploaded Image', use_column_width=True)
 
     # Convert PIL image to a format suitable for YOLO model
